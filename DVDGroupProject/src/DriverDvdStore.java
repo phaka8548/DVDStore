@@ -160,6 +160,32 @@ public class DriverDvdStore {
 	}
 	
 	/**
+	 * 
+	 * @param full name name of customer to search for
+	 * @param Linked Positional List that holds CustomerType Objects CusDatabase
+	 * @return the position of the Customer
+	 * @throws NoSuchElementException if customer doesn't exist in database
+	 */
+	public static Position<CustomerType> searchCustomer(String name, LinkedPositionalList<CustomerType> CusDatabase)
+			throws NoSuchElementException
+	{
+				Position<CustomerType> Customeriterator = CusDatabase.first();			//Set initial position to point to first position (node) in array
+				while (Customeriterator != null) 
+				{ 
+					 //compare the titles
+					if (name.compareTo(Customeriterator.getElement().getFullName()) == 0)	//get title of element in that position
+					{
+						System.out.println("Found Customer: " + name);
+						return Customeriterator;
+					}
+					//else, go to next element
+					Customeriterator = CusDatabase.after(Customeriterator);			//make iterator the next position 
+				 }
+				
+				throw new NoSuchElementException("Cannot locate Customer: " + name); //if iterates and doesn't discover DVD
+	}
+	
+	/**
 	 * This method prints out all the DVDs's titles given a positional list
 	 * @param DVDlibrary
 	 */
