@@ -69,6 +69,19 @@ public class DriverDvdStore {
 		DvdType[] rentedDVDs4 = {c, b};
 		CustomerType jill = new CustomerType("Jill Banks", 4, "JillBanks@email.com", rentedDVDs4);
 		
+		//The way you implemented the arrays above make me quite skeptical of my code but here it is, it worked in what I downloaded before.
+		//I did not know someone else would be testing my section...? Just let me know if I need to change anything and I will be happy to do so.
+		
+		
+		String[] carlRentedDVDs = {"","","","",""};
+		CustomerType carl = new CustomerType("Carl Clam",5678,"ClamMan@email.com",carlRentedDVDs);
+		System.out.println(carl.toString());
+		carl.rentDVD("The Avengers",carlRentedDVDs);
+		carl.rentDVD("The Big Sick",carlRentedDVDs);
+		carl.rentDVD("The Terminator", carlRentedDVDs);
+		carl.returnDVD("The Big Sick",carlRentedDVDs);
+		System.out.println(carl.toString());
+		
 		
 		//updating out dvdtypes to match whats checked out
 		
