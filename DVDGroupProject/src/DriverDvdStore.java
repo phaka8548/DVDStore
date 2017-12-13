@@ -73,13 +73,16 @@ public class DriverDvdStore {
 		//I did not know someone else would be testing my section...? Just let me know if I need to change anything and I will be happy to do so.
 		
 		
-		String[] carlRentedDVDs = {"","","","",""};
+		DvdType[] carlRentedDVDs = {};
 		CustomerType carl = new CustomerType("Carl Clam",5678,"ClamMan@email.com",carlRentedDVDs);
-		System.out.println(carl.toString());
-		carl.rentDVD("The Avengers",carlRentedDVDs);
-		carl.rentDVD("The Big Sick",carlRentedDVDs);
-		carl.rentDVD("The Terminator", carlRentedDVDs);
-		carl.returnDVD("The Big Sick",carlRentedDVDs);
+		carl.toString();
+		carl.rentDVD(a);
+		carl.rentDVD(b);
+		carl.rentDVD(c);
+		carl.rentDVD(d);
+		carl.rentDVD(c);
+		carl.rentDVD(c);
+		//carl.returnDVD(b);
 		System.out.println(carl.toString());
 		
 		

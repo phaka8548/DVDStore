@@ -2,13 +2,13 @@
 public class CheckedOut {
 	
 	private double accountNumber;
-	private String[] titles = new String[5];
+	private DvdType[] DVDs = new DvdType[5];
+	String[] titles = new String[5];
 	
-	
-	public CheckedOut(double accountNumber, String[] titles) {
+	public CheckedOut(double accountNumber, DvdType[] DVDs) {
 		super();
 		this.accountNumber = accountNumber;
-		this.titles = titles;
+		this.DVDs = DVDs;
 	}
 	
 	
@@ -22,6 +22,12 @@ public class CheckedOut {
 		this.accountNumber = accountNumber;
 	}
 	public String[] getTitles() {
+		for (int i = 0; i < DVDs.length ; i++)	//can only fill titles based on the number of DVDs 
+		{
+			
+			titles[i] =  DVDs[i].getTitle();		//fill array with titles of DVD's in list
+			
+		}
 		return titles;
 	}
 	public void setTitles(DvdType[] DVDs)

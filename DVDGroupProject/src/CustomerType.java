@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //Customer Type is a subclass of Person Class
 public class CustomerType extends Person{
 
@@ -52,74 +54,70 @@ public class CustomerType extends Person{
 	//Print a list of their rented DVDs
 	public String printRentedDVDs()
 	{
-		
-		DvdType[] DVDs = this.getRentedDVDs();
-		String borrowList = "";
-		for (int i = 0; i < DVDs.length; i++)
-		{
-			if (DVDs[i] != null)
-			borrowList = borrowList + DVDs[i].getTitle() + " \n";
-		}
-		return ("\n" + this.fullName + ": Rented DVDs \n") + borrowList;
+		return Arrays.toString(this.getRentedDVDs());
 	}
 	
 	
 	//methods to rent and return (similar to DVDType methods)
-public void rentDVD(String dvdTitle, String[] rentedDVDs2)
+	public void rentDVD(DvdType rentedDVD)
 	{ 
-		if(maxDVDsReached()){
-			System.out.println("You have rented the maximum amount of DVDs [5] ");
-		}
-		for(int lcv =0;lcv<rentedDVDs2.length;lcv++){
-			if(rentedDVDs2[lcv].equals(""))
+	//exception
+		boolean notFull = true;
+		for(int lcv = 0; lcv < this.rentedDVDs.length; lcv++)
+		{
+			if(this.rentedDVDs[lcv] == null)
 			{
-				System.out.println("Renting DVD: "+dvdTitle);
-				 rentedDVDs2[lcv] = dvdTitle;
-				 break;
+				System.out.println("Renting DVD: "+ rentedDVD.getTitle());
+				this.rentedDVDs[lcv] = rentedDVD;
+				if (lcv == 4)
+					notFull = false;
+				break;
 			}
+			
 		}
+		if (!notFull)
+			System.out.print(this.fullName + " cannot rent any more DVDs");
+	}
+
+	public void sortNulls()
+	{
+	
 		//rearrange...???
-		 for (int lcv=0; lcv<rentedDVDs2.length; lcv++){
-	            if (rentedDVDs2[lcv].equals("")){
-	                for (int lcv2=lcv+1; lcv2<rentedDVDs2.length; lcv2++){
-	                   rentedDVDs2[lcv2-1] = rentedDVDs2[lcv2];
+		 for (int lcv=0; lcv < this.rentedDVDs.length; lcv++)
+		 {
+	            if (this.rentedDVDs[lcv].equals(null))
+	            {
+	                for (int lcv2=lcv+1; lcv2<this.rentedDVDs.length; lcv2++){
+	                		rentedDVDs[lcv2-1] = rentedDVDs[lcv2];
 	                }
-	                rentedDVDs2[rentedDVDs2.length-1].equals("");
-	                break;
+	                rentedDVDs[rentedDVDs.length-1].equals(null);
+	                	break;
 	            }
 	        }
-		
+		 
 	}
-	public void returnDVD(String dvdTitle, String[] rentedDVDs2){
-		for(int lcv =0;lcv<rentedDVDs.length;lcv++){
+	public void returnDVD(DvdType dvdTitle)
+	{
+		for(int lcv = 0; lcv<rentedDVDs.length; lcv++){
 			if(rentedDVDs[lcv].equals(dvdTitle))
 			{
-				 rentedDVDs[lcv]="";
+				 rentedDVDs[lcv] = null;
 				 System.out.println("Returning DVD: "+dvdTitle);
 			}
 		}
-		 for (int lcv=0; lcv<rentedDVDs.length; lcv++){
-	            if (rentedDVDs[lcv].equals("")){
-	                for (int lcv2=lcv+1; lcv2<rentedDVDs.length; lcv2++){
-	                   rentedDVDs[lcv2-1] = rentedDVDs[lcv2];
-	                }
-	                rentedDVDs[rentedDVDs.length-1].equals("");
-	                break;
-	            }
-	        }
+		this.sortNulls();
 	}
 	
 	
-	public boolean maxDVDsReached(){
-		boolean flag = false;
-		for(int lcv=0;lcv<rentedDVDs.length;lcv++)
+	/*public boolean maxDVDsReached(){
+		for(int lcv=0; lcv<rentedDVDs.length; lcv++)
 		{
-			if(rentedDVDs[lcv]==null){
-				flag = true;
+			if(rentedDVDs[lcv] == null){	//if there is an empty spot
+				return false;			
 			}
 		}
-		return flag;		
-	}
+		return true;		
+	}*/
 	@Override
 	public String toString() {
 		 
