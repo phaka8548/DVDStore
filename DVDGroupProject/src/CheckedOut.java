@@ -24,8 +24,14 @@ public class CheckedOut {
 	public String[] getTitles() {
 		return titles;
 	}
-	public void setTitles(String[] title) {
-		this.titles = title;
+	public void setTitles(DvdType[] DVDs)
+	{
+		for (int i = 0; i < DVDs.length ; i++)	//can only fill titles based on the number of DVDs 
+		{
+			
+			titles[i] = DVDs[i].getTitle();		//fill array with titles of DVD's in list
+		}
+		
 	}
 
 

@@ -57,16 +57,16 @@ public class DriverDvdStore {
 		printAllDVDs(temp);
 		
 		//Creating some customer to fill a list
-		String[] rentedDVDs1 = {"The Wedding Singer", "The Terminator"};
+		DvdType[] rentedDVDs1 = {c, d};
 		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com", rentedDVDs1);
 		
-		String[] rentedDVDs2 = {"The Notebook", "The Big Sick"};
+		DvdType[] rentedDVDs2 = {a, b};
 		CustomerType josh = new CustomerType("Josh Smith", 2, "JoshSmith@email.com", rentedDVDs2);
 		
-		String[] rentedDVDs3 = {"The Notebook", "The Terminator"};
+		DvdType[] rentedDVDs3 = {a, c};
 		CustomerType jess = new CustomerType("Jess Cooper", 3, "JessCooper@email.com", rentedDVDs3);
 		
-		String[] rentedDVDs4 = {"The Wedding Singer", "The Big Sick"};
+		DvdType[] rentedDVDs4 = {c, b};
 		CustomerType jill = new CustomerType("Jill Banks", 4, "JillBanks@email.com", rentedDVDs4);
 		
 		
@@ -101,7 +101,8 @@ public class DriverDvdStore {
 		
 		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
 		
-		CheckedOut e = new CheckedOut();
+		CheckedOut e = new CheckedOut();			//Checked out is basically an object that holds which DVDs are checked
+													//out and who has the DVD
 		
 		e.setTitles(joey.getRentedDVDs());
 		e.setAccountNumber(joey.getAccountNumber());

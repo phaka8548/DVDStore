@@ -4,9 +4,9 @@ public class CustomerType extends Person{
 	private String fullName;
 	private double accountNumber;
 	private String email;
-	private String[] rentedDVDs = new String[5];	//Customers can only rent 5 DVD's at a time
+	private DvdType[] rentedDVDs = new DvdType[5];	//Customers can only rent 5 DVD's at a time
 
-	public CustomerType(String fullName, double accountNumber, String email, String[] rentedDVDs) {
+	public CustomerType(String fullName, double accountNumber, String email, DvdType[] rentedDVDs) {
 		super(fullName);	//inherited from superclass
 		this.fullName = fullName;
 		this.accountNumber = accountNumber;
@@ -41,10 +41,10 @@ public class CustomerType extends Person{
 		this.email = email;
 	}
 
-	public String[] getRentedDVDs() {
+	public DvdType[] getRentedDVDs() {
 		return rentedDVDs;
 	}
-	public void setRentedDVDs(String[] rentedDVDs) {
+	public void setRentedDVDs(DvdType[] rentedDVDs) {
 		this.rentedDVDs = rentedDVDs;
 	}
 
@@ -53,11 +53,12 @@ public class CustomerType extends Person{
 	public String printRentedDVDs()
 	{
 		
-		String[] DVDs = this.getRentedDVDs();
+		DvdType[] DVDs = this.getRentedDVDs();
 		String borrowList = "";
 		for (int i = 0; i < DVDs.length; i++)
 		{
-			borrowList = borrowList + DVDs[i] + " \n";
+			if (DVDs[i] != null)
+			borrowList = borrowList + DVDs[i].getTitle() + " \n";
 		}
 		return ("\n" + this.fullName + ": Rented DVDs \n") + borrowList;
 	}
