@@ -77,6 +77,7 @@ public class DriverDvdStore {
 		carl.rentDVD(b);
 		carl.rentDVD(c);
 		carl.rentDVD(d);
+		System.out.println(carl.toString());
 		carl.returnDVD(b);
 		System.out.println(carl.toString());
 		
@@ -109,10 +110,16 @@ public class DriverDvdStore {
 		
 		
 		//checked out list
+		//rent thats going to search through DVD list and reduce its number of copies by one
+		//and find the customer in the customer list and adds a DVD to their list
+		//and in the checkout positional list - grab the DVD that was checked and the account # that holds it
+		//before adding object to a list, search through list, find ID number, and add that DVD to that ID
+		//if they don't have anything checked out, create a new checked out object and add that to that array
+		//need a 3rd search method to search through CheckedOut positional list
 		
 		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
 		
-		CheckedOut e = new CheckedOut();			//Checked out is basically an object that holds which DVDs are checked
+		/*CheckedOut e = new CheckedOut();			//Checked out is basically an object that holds which DVDs are checked
 													//out and who has the DVD
 		
 		e.setTitles(joey.getRentedDVDs());
@@ -139,7 +146,7 @@ public class DriverDvdStore {
 		h.setTitles(jill.getRentedDVDs());
 		h.setAccountNumber(jill.getAccountNumber());
 		
-		tempCheck.addFirst(h);
+		tempCheck.addFirst(h);*/
 		
 		
 		
