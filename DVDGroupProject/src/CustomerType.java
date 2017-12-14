@@ -6,14 +6,13 @@ public class CustomerType extends Person{
 	private String fullName;
 	private double accountNumber;
 	private String email;
-	private DvdType[] rentedDVDs = new DvdType[5];	//Customers can only rent 5 DVD's at a time
+	private DvdType[] rentedDVDs = {null, null, null, null, null};	//Customers can only rent 5 DVD's at a time
 
-	public CustomerType(String fullName, double accountNumber, String email, DvdType[] rentedDVDs) {
+	public CustomerType(String fullName, double accountNumber, String email) {
 		super(fullName);	//inherited from superclass
 		this.fullName = fullName;
 		this.accountNumber = accountNumber;
 		this.email = email;
-		//how do we want to keep track of rented DVDs?
 		this.rentedDVDs = rentedDVDs;
 	}
 	
@@ -54,30 +53,40 @@ public class CustomerType extends Person{
 	//Print a list of their rented DVDs
 	public String printRentedDVDs()
 	{
-		return Arrays.toString(this.getRentedDVDs());
+		String rentedDVDTitles = "";
+		for (int i = 0; i < this.rentedDVDs.length ; i++)
+		{
+			if (rentedDVDs[i] != null)		//check for nulls to avoid the null pointer error
+			{
+				rentedDVDTitles += "\n" + rentedDVDs[i].getTitle();
+			}
+			else
+				continue;
+		}
+		return rentedDVDTitles;
+		
 	}
 	
 	
 	//methods to rent and return (similar to DVDType methods)
 	public void rentDVD(DvdType rentedDVD)
-	{ 
-	//exception
-		boolean notFull = true;
-		for(int lcv = 0; lcv < this.rentedDVDs.length; lcv++)
-		{
-			if(this.rentedDVDs[lcv] == null)
-			{
-				System.out.println("Renting DVD: "+ rentedDVD.getTitle());
-				this.rentedDVDs[lcv] = rentedDVD;
-				if (lcv == 4)
-					notFull = false;
-				break;
-			}
-			
-		}
-		if (!notFull)
-			System.out.print(this.fullName + " cannot rent any more DVDs");
-	}
+    { 
+    //exception
+        for(int lcv = 0; lcv < this.rentedDVDs.length+1; lcv++)
+        {
+            if (lcv == this.rentedDVDs.length) 
+            {
+                System.out.println(this.fullName + " cannot rent any more DVDs");
+                break;
+            }          
+            if(this.rentedDVDs[lcv] == null)
+            {
+                System.out.println("Renting DVD: "+ rentedDVD.getTitle());
+                this.rentedDVDs[lcv] = rentedDVD;
+                break;
+            }       
+        } 
+    }
 
 	public void sortNulls()
 	{
@@ -98,31 +107,28 @@ public class CustomerType extends Person{
 	}
 	public void returnDVD(DvdType dvdTitle)
 	{
-		for(int lcv = 0; lcv<rentedDVDs.length; lcv++){
-			if(rentedDVDs[lcv].equals(dvdTitle))
+		for(int lcv = 0; lcv < rentedDVDs.length; lcv++){ 		//go through loop
+	
+			if (rentedDVDs[lcv] != null)
 			{
-				 rentedDVDs[lcv] = null;
-				 System.out.println("Returning DVD: "+dvdTitle);
+				if(rentedDVDs[lcv].equals(dvdTitle))				//find if the objects are the same
+				{
+				 System.out.println("Returning DVD: "+  dvdTitle.getTitle());
+				 rentedDVDs[lcv] = null;						//if they are, set that DVD to null
+				}
 			}
+			else
+				continue;
 		}
-		this.sortNulls();
+		//this.sortNulls();
 	}
 	
 	
-	/*public boolean maxDVDsReached(){
-		for(int lcv=0; lcv<rentedDVDs.length; lcv++)
-		{
-			if(rentedDVDs[lcv] == null){	//if there is an empty spot
-				return false;			
-			}
-		}
-		return true;		
-	}*/
 	@Override
 	public String toString() {
 		 
 		String rentedDVDList = printRentedDVDs();
-		return "CustomerType [fullName=" + fullName + ", accountNumber=" + accountNumber + ", email=" + email + rentedDVDList + "]";
+		return "Customer fullName=" + fullName + ", accountNumber=" + accountNumber + ", email=" + email + rentedDVDList + "]";
 	}
 		
 

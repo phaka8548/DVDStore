@@ -57,32 +57,27 @@ public class DriverDvdStore {
 		printAllDVDs(temp);
 		
 		//Creating some customer to fill a list
-		DvdType[] rentedDVDs1 = {c, d};
-		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com", rentedDVDs1);
+		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com");
+		joey.rentDVD(a);
 		
-		DvdType[] rentedDVDs2 = {a, b};
-		CustomerType josh = new CustomerType("Josh Smith", 2, "JoshSmith@email.com", rentedDVDs2);
+
+		CustomerType josh = new CustomerType("Josh Smith", 2, "JoshSmith@email.com");
+		josh.rentDVD(b);
 		
-		DvdType[] rentedDVDs3 = {a, c};
-		CustomerType jess = new CustomerType("Jess Cooper", 3, "JessCooper@email.com", rentedDVDs3);
+		CustomerType jess = new CustomerType("Jess Cooper", 3, "JessCooper@email.com");
+		jess.rentDVD(c);
 		
-		DvdType[] rentedDVDs4 = {c, b};
-		CustomerType jill = new CustomerType("Jill Banks", 4, "JillBanks@email.com", rentedDVDs4);
+		CustomerType jill = new CustomerType("Jill Banks", 4, "JillBanks@email.com");
+		//jill.rentDVD(d);
+
 		
-		//The way you implemented the arrays above make me quite skeptical of my code but here it is, it worked in what I downloaded before.
-		//I did not know someone else would be testing my section...? Just let me know if I need to change anything and I will be happy to do so.
-		
-		
-		DvdType[] carlRentedDVDs = {};
-		CustomerType carl = new CustomerType("Carl Clam",5678,"ClamMan@email.com",carlRentedDVDs);
+		CustomerType carl = new CustomerType("Carl Clam",5678,"ClamMan@email.com");
 		carl.toString();
 		carl.rentDVD(a);
 		carl.rentDVD(b);
 		carl.rentDVD(c);
 		carl.rentDVD(d);
-		carl.rentDVD(c);
-		carl.rentDVD(c);
-		//carl.returnDVD(b);
+		carl.returnDVD(b);
 		System.out.println(carl.toString());
 		
 		
@@ -234,4 +229,3 @@ public class DriverDvdStore {
 	
 	
 }
-
