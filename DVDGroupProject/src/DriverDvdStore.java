@@ -53,64 +53,7 @@ public class DriverDvdStore {
 		
 		LinkedPositionalList<CheckedOut> CheckedOutList = new LinkedPositionalList<>();
 		
-		/*
 		
-		CheckedOut x = new CheckedOut(joey);													
-		
-		x.addDVD(a);
-		x.addDVD(b);
-		
-		a.checkOut();
-		b.checkOut();
-		
-		
-		
-		CheckedOut y = new CheckedOut(josh);													
-		
-		y.addDVD(c);
-		y.addDVD(d);
-		
-		c.checkOut();
-		d.checkOut();
-		
-		
-		
-		CheckedOut z = new CheckedOut(jess);													
-		
-		z.addDVD(a);
-		z.addDVD(c);
-		
-		a.checkOut();
-		c.checkOut();
-		
-		
-		
-		CheckedOut w = new CheckedOut(jill);													
-		
-		w.addDVD(a);
-		w.addDVD(b);
-		
-		c.checkOut();
-		a.checkOut();
-		
-		
-		CheckedOut u = new CheckedOut(carl);													
-		
-		u.addDVD(a);
-		u.addDVD(b);
-		
-		d.checkOut();
-		a.checkOut();
-		
-		
-		//add the object to the list
-		CheckedOutList.addFirst(x);
-		CheckedOutList.addFirst(y);
-		CheckedOutList.addFirst(z);
-		CheckedOutList.addFirst(w);
-		CheckedOutList.addFirst(u);
-		
-		*/
 		//testing the methods
 		
 		
