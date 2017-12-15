@@ -122,7 +122,7 @@ public class CustomerType extends Person{
 				 break;
 				}
 		}
-		for(int lcv = nullElement; nullElement < rentedDVDs.length; nullElement++)
+		for(int lcv = nullElement; lcv < rentedDVDs.length - 1; lcv++)
 		{
 			if (rentedDVDs[lcv+1].equals(null)) 
 			{

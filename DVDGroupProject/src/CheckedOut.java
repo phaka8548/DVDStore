@@ -15,7 +15,6 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 		this.DVDs = DVDs;
 	}
 
-	//generic constructor
 	public CheckedOut() {}
 
 	public double getAccountNumber() {
@@ -48,13 +47,24 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 	 */
 	public void removeDVD(DvdType DVD)
 	{
-		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
-		{   
-            if (this.DVDs[lcv] == DVD)		//find the DVD
-            {
-            	this.DVDs[lcv] = null;		//remove it from the list
-            	break;
-            }       
+		int nullElement = 0;
+		for (int lcv = 0; lcv < DVDs.length; lcv++)
+		{
+			if(DVDs[lcv].equals(DVD))			
+				{
+				 DVDs[lcv] = null;
+				 nullElement = lcv;
+				 break;
+				}
+		}
+		for(int lcv = nullElement; lcv < DVDs.length - 1; lcv++)
+		{
+			if (DVDs[lcv+1].equals(null)) 
+			{
+				break;
+			} else {
+				DVDs[lcv] = DVDs[lcv];
+			}
 		}
 	}
 }

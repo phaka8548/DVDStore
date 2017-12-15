@@ -139,6 +139,7 @@ public class DriverDvdStore {
 		//put the DVD in the checked out object
 		e.addDVD(d);
 		
+		
 		//add the object to the list
 		tempCheck.addLast(e);
 		
@@ -261,6 +262,7 @@ public class DriverDvdStore {
 			return "This DVD doesn't exist";
 		}
 	}
+	
 	
 	
 }
