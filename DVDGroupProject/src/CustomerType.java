@@ -7,22 +7,16 @@ public class CustomerType extends Person{
 	private double accountNumber;
 	private String email;
 	private DvdType[] rentedDVDs = {null, null, null, null, null};	//Customers can only rent 5 DVD's at a time
-	private static int numCustomers = 1;
-	
+
 	public CustomerType(String fullName, double accountNumber, String email) {
 		super(fullName);	//inherited from superclass
 		this.fullName = fullName;
 		this.accountNumber = accountNumber;
 		this.email = email;
 		this.rentedDVDs = rentedDVDs;
-		numCustomers++;
 	}
 	
 	
-	public static int getNumCustomers() {
-		return numCustomers;
-	}
-
 	public String getFullName() {
 		return fullName;
 	}
@@ -81,19 +75,19 @@ public class CustomerType extends Person{
         {
             if (lcv == this.rentedDVDs.length) 
             {
-                System.out.println(this.fullName + " cannot rent any more DVDs");
+                System.out.println(this.fullName + " cannot rent any more DVDs" + "\n");
                 break;
             }          
             if(this.rentedDVDs[lcv] == null)
             {
-                System.out.println("Renting DVD: "+ rentedDVD.getTitle());
+                System.out.println(this.fullName + " is renting DVD: "+ rentedDVD.getTitle() + "\n");
                 this.rentedDVDs[lcv] = rentedDVD;
                 break;
             }       
         } 
     }
 
-	public void sortNulls()
+	/*public void sortNulls()
 	{
 	
 		//rearrange...???
@@ -109,23 +103,29 @@ public class CustomerType extends Person{
 	            }
 	        }
 		 
-	}
-	public void returnDVD(DvdType dvdTitle)
+	}*/
+	public void returnDVD(DvdType rentedDVD)
 	{
-		for(int lcv = 0; lcv < rentedDVDs.length; lcv++){ 		//go through loop
-	
-			if (rentedDVDs[lcv] != null)
-			{
-				if(rentedDVDs[lcv].equals(dvdTitle))				//find if the objects are the same
+		int nullElement = 0;
+		for (int lcv = 0; lcv < rentedDVDs.length; lcv++)
+		{
+			if(rentedDVDs[lcv].equals(rentedDVD))			
 				{
-				 System.out.println("Returning DVD: "+  dvdTitle.getTitle());
-				 rentedDVDs[lcv] = null;						//if they are, set that DVD to null
+				 System.out.println(this.fullName + " is returning DVD: "+  rentedDVD.getTitle() + "\n");
+				 rentedDVDs[lcv] = null;
+				 nullElement = lcv;
+				 break;
 				}
-			}
-			else
-				continue;
 		}
-		//this.sortNulls();
+		for(int lcv = nullElement; nullElement < rentedDVDs.length; nullElement++)
+		{
+			if (rentedDVDs[lcv+1].equals(null)) 
+			{
+				break;
+			} else {
+				rentedDVDs[lcv] = rentedDVDs[lcv];
+			}
+		}
 	}
 	
 	
@@ -133,7 +133,7 @@ public class CustomerType extends Person{
 	public String toString() {
 		 
 		String rentedDVDList = printRentedDVDs();
-		return "Customer fullName=" + fullName + ", accountNumber=" + accountNumber + ", email=" + email + rentedDVDList + "]";
+		return "Name: " + fullName + "\naccountNumber: " + accountNumber + "\nemail: " + email + rentedDVDList + "\n";
 	}
 		
 
