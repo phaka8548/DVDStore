@@ -58,23 +58,25 @@ public class DriverDvdStore {
 		printAllDVDs(temp);
 		
 		//Creating some customer to fill a list
-		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com");
+		CustomerType joey = new CustomerType("Joey Jo", CustomerType.getNumCustomers() , "JoeyJo@email.com");
 		joey.rentDVD(a);
-		int newID = CustomerType.getNumCustomers();
 		
-		CustomerType josh = new CustomerType("Josh Smith", newID, "JoshSmith@email.com");
+		//int newID = CustomerType.getNumCustomers();
+		
+		CustomerType josh = new CustomerType("Josh Smith", CustomerType.getNumCustomers() , "JoshSmith@email.com");
 		josh.rentDVD(b);
 		
 		System.out.println(josh.toString());
+
 		
-		CustomerType jess = new CustomerType("Jess Cooper", 3, "JessCooper@email.com");
+		CustomerType jess = new CustomerType("Jess Cooper", CustomerType.getNumCustomers(), "JessCooper@email.com");
 		jess.rentDVD(c);
 		
-		CustomerType jill = new CustomerType("Jill Banks", 4, "JillBanks@email.com");
+		CustomerType jill = new CustomerType("Jill Banks", CustomerType.getNumCustomers(), "JillBanks@email.com");
 		//jill.rentDVD(d);
 
 		
-		CustomerType carl = new CustomerType("Carl Clam",5678,"ClamMan@email.com");
+		CustomerType carl = new CustomerType("Carl Clam", CustomerType.getNumCustomers(),"ClamMan@email.com");
 		carl.toString();
 		carl.rentDVD(a);
 		carl.rentDVD(b);
@@ -123,6 +125,8 @@ public class DriverDvdStore {
 		//before adding object to a list, search through list, find ID number, and add that DVD to that ID
 		//if they don't have anything checked out, create a new checked out object and add that to that array
 		//need a 3rd search method to search through CheckedOut positional list
+		
+		
 	
 		//Implementation of how the checkedOut positional list (list of all checkedOut DVDs and their associated account
 		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
