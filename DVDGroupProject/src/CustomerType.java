@@ -4,19 +4,31 @@ import java.util.Arrays;
 public class CustomerType extends Person{
 
 	private String fullName;
-	private double accountNumber;
+	private int accountNumber;
 	private String email;
-	private DvdType[] rentedDVDs = {null, null, null, null, null};	//Customers can only rent 5 DVD's at a time
+	//private DvdType[] rentedDVDs = {null, null, null, null, null};	//Customers can only rent 5 DVD's at a time
 	private static int numCustomers = 1;
 
-	public CustomerType(String fullName, double accountNumber, String email) {
+	//constructor
+	
+	public CustomerType(String fullName, int accountNumber, String email) {
 		super(fullName);	//inherited from superclass
 		this.fullName = fullName;
 		this.accountNumber = accountNumber;
 		this.email = email;
-		this.rentedDVDs = rentedDVDs;
 		numCustomers++;
 	}
+	
+	//tostring
+	
+	@Override
+	public String toString() {
+		 
+		//String rentedDVDList = printRentedDVDs();
+		return "Name: " + fullName + "\nAccount Number: " + accountNumber + "\nemail: " + email + "\n";
+	}
+		
+	//setters and getters
 	
 	public static int getNumCustomers() {
 		return numCustomers;
@@ -34,7 +46,7 @@ public class CustomerType extends Person{
 		return accountNumber;
 	}
 
-	public void setAccountNumber(double accountNumber) {
+	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
@@ -46,6 +58,11 @@ public class CustomerType extends Person{
 		this.email = email;
 	}
 
+	
+	//old functional methods, all moved to the checkedout class
+	
+	/*
+	
 	public DvdType[] getRentedDVDs() {
 		return rentedDVDs;
 	}
@@ -92,7 +109,7 @@ public class CustomerType extends Person{
         } 
     }
 
-	/*public void sortNulls()
+	public void sortNulls()
 	{
 	
 		//rearrange...???
@@ -108,7 +125,7 @@ public class CustomerType extends Person{
 	            }
 	        }
 		 
-	}*/
+	}
 	public void returnDVD(DvdType rentedDVD)
 	{
 		int nullElement = 0;
@@ -132,14 +149,7 @@ public class CustomerType extends Person{
 			}
 		}
 	}
+	*/
 	
-	
-	@Override
-	public String toString() {
-		 
-		String rentedDVDList = printRentedDVDs();
-		return "Name: " + fullName + "\naccountNumber: " + accountNumber + "\nemail: " + email + rentedDVDList + "\n";
-	}
-		
 
 }

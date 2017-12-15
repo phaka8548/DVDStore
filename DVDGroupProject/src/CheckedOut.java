@@ -1,38 +1,65 @@
-public class CheckedOut {			//object that holds an account number and the DVD's associated with that account #
+import java.util.Arrays;
+
+/*object that holds an account number and the DVD's associated with that account #
+essentially a checkedOut object is a piece of paper that holds the account # and DVD associated with that account
+and in the checkout positional list - grab the DVD that was checked and the account # that holds it
+before adding object to a list, search through list, find ID number, and add that DVD to that ID*/
+
+public class CheckedOut {			
+
+	private CustomerType customer;				
+	private DvdType[] DVDs = {null, null, null, null, null};	
+
+	//constructors
 	
-	//essentially a checkedOut object is a piece of paper that holds the account # and DVD associated with that account
-	//and in the checkout positional list - grab the DVD that was checked and the account # that holds it
-	//before adding object to a list, search through list, find ID number, and add that DVD to that ID
-
-	private double accountNumber;				//holding account number of a person
-	private DvdType[] DVDs = {null, null, null, null, null};	//holding DVDs person checked out (rented)
-
-	//this object will hold an account number and the DVD that was rented
-	public CheckedOut(double accountNumber) {
+	public CheckedOut(CustomerType customer) {
 		super();
-		this.accountNumber = accountNumber;
-		//CustomerType rentingCustomer = new CustomerType("", accountNumber, "newEmail");
-		this.DVDs = DVDs;
+		this.customer = customer;
 	}
 
 	public CheckedOut() {}
-
-	public double getAccountNumber() {
-		return accountNumber;
+	
+	//tostring
+	
+	@Override
+	public String toString() {
+		return "Name: " + customer.getFullName() + "\nAccount Number: " + customer.getAccountNumber() + "\nRented DVDs" + printRentedDVDs();
 	}
-	public void setAccountNumber(double accountNumber) {
-		this.accountNumber = accountNumber;
+	
+	//setters and getters
+	
+	public CustomerType getCustomer() {
+		return customer;
 	}
 
+	public void setCustomer(CustomerType customer) {
+		this.customer = customer;
+	}
 
+	public DvdType[] getDVDs() {
+		return DVDs;
+	}
+
+	public void setDVDs(DvdType[] dVDs) {
+		DVDs = dVDs;
+	}
+
+	
+	//functional methods
+	
 	/**
 	 * adds a DVD into a checkedOutObject
 	 * @param outDVD the DVD the person is checking out
 	 */
 	public void addDVD(DvdType DVD)			//This object will essentially hold a list of DVDs
 	{
-		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
+		for(int lcv = 0; lcv < this.DVDs.length+1; lcv++)
 		{   
+			if (lcv == this.DVDs.length) 
+            {
+                System.out.println(this.customer.getFullName() + " cannot rent any more DVDs" + "\n");
+                break;
+            }   
             if (this.DVDs[lcv] == null)		//find an empty spot
             {
             	this.DVDs[lcv] = DVD;		//add DVD to the list
@@ -57,14 +84,41 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 				 break;
 				}
 		}
-		for(int lcv = nullElement; lcv < DVDs.length - 1; lcv++)
+		for(int lcv = nullElement; lcv < DVDs.length; lcv++)
 		{
-			if (DVDs[lcv+1].equals(null)) 
+			if (lcv == DVDs.length)
+				break;
+			
+			if (DVDs[lcv+1] == null) 
 			{
 				break;
 			} else {
-				DVDs[lcv] = DVDs[lcv];
+				DVDs[lcv] = DVDs[lcv+1];
 			}
 		}
+	}
+	
+	public boolean isEmpty()
+	{
+		if (DVDs[0] == null)
+			return true;
+		return false;
+	}
+	
+	//Print a list of their rented DVDs
+	public String printRentedDVDs()
+	{
+		String rentedDVDTitles = "";
+		for (int i = 0; i < this.DVDs.length ; i++)
+		{
+			if (DVDs[i] != null)		//check for nulls to avoid the null pointer error
+			{
+				rentedDVDTitles += "\n" + DVDs[i].getTitle();
+			}
+			else
+				continue;
+		}
+		return rentedDVDTitles;
+		
 	}
 }

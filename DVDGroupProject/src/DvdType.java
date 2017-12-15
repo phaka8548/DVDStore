@@ -9,6 +9,7 @@ public class DvdType {
 	String proCompany;
 	int copies;
 	
+	//constructors
 	
 	public DvdType(String title, String[] stars, String producer, String director, String proCompany, int copies) {
 		super();
@@ -20,16 +21,17 @@ public class DvdType {
 		this.copies = copies;
 	}
 
-
 	public DvdType() {}
 
-
+	//tostring
+	
 	@Override
 	public String toString() {
-		return "DvdType [title=" + title + ", stars=" + Arrays.toString(stars) + ", producer=" + producer
-				+ ", director=" + director + ", proCompany=" + proCompany + ", copies=" + copies + "]";
+		return "Title: " + title + "\nStars: " + Arrays.toString(stars) + "\nProducer: " + producer
+				+ "\nDirector: " + director + "\nProduction Company: " + proCompany + "\nNumber of Copies in the Store: " + copies + "\n";
 	}
 
+	//setters and getters
 
 	public String getTitle() {
 		return title;
@@ -89,6 +91,9 @@ public class DvdType {
 	public void setCopies(int copies) {
 		this.copies = copies;
 	}
+	
+	
+	//functional methods
 	
 	public void checkOut() {
 		if (dvdAvailible(this))
