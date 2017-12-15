@@ -6,15 +6,6 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 
 	private double accountNumber;				//holding account number of a person
 	private DvdType[] DVDs = {null, null, null, null, null};	//holding DVDs person checked out (rented)
-	
-
-	public double getAccountNumber() {
-		return accountNumber;
-	}
-	public void setAccountNumber(double accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
 
 	//this object will hold an account number and the DVD that was rented
 	public CheckedOut(double accountNumber) {
@@ -22,6 +13,14 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 		this.accountNumber = accountNumber;
 		//CustomerType rentingCustomer = new CustomerType("", accountNumber, "newEmail");
 		this.DVDs = DVDs;
+	}
+
+	
+	public double getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(double accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 
