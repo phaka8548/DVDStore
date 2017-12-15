@@ -1,15 +1,9 @@
 public class CheckedOut {			//object that holds an account number and the DVD's associated with that account #
 	
-
-	//checked out list
-	//rent thats going to search through DVD list and reduce its number of copies by one
-	//and find the customer in the customer list and adds a DVD to their list
+	//essentially a checkedOut object is a piece of paper that holds the account # and DVD associated with that account
 	//and in the checkout positional list - grab the DVD that was checked and the account # that holds it
 	//before adding object to a list, search through list, find ID number, and add that DVD to that ID
-	//if they don't have anything checked out, create a new checked out object and add that to that array
-	//need a 3rd search method to search through CheckedOut positional list
-	
-	
+
 	private double accountNumber;				//holding account number of a person
 	private DvdType[] DVDs = {null, null, null, null, null};	//holding DVDs person checked out (rented)
 	
@@ -23,11 +17,11 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 
 
 	//this object will hold an account number and the DVD that was rented
-	public CheckedOut(double accountNumber, DvdType[] dVDs) {
+	public CheckedOut(double accountNumber) {
 		super();
 		this.accountNumber = accountNumber;
 		//CustomerType rentingCustomer = new CustomerType("", accountNumber, "newEmail");
-		DVDs = dVDs;
+		this.DVDs = DVDs;
 	}
 
 
