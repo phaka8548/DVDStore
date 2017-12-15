@@ -14,6 +14,14 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 	private DvdType[] DVDs = {null, null, null, null, null};	//holding DVDs person checked out (rented)
 	
 
+	public double getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(double accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+
 	//this object will hold an account number and the DVD that was rented
 	public CheckedOut(double accountNumber, DvdType[] dVDs) {
 		super();
@@ -22,32 +30,36 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 		DVDs = dVDs;
 	}
 
-	//checkout - add a DVD to the customer's list and decrement the DVDs copies by 1
-	//in order to implement, create a customer, and a DVD
+
 	/**
-	 * 
-	 * @param CustomerType person who is checking out DVD
+	 * adds a DVD into a checkedOutObject
 	 * @param outDVD the DVD the person is checking out
 	 */
-	public void addDVD(DvdType DVD)
+	public void addDVD(DvdType DVD)			//This object will essentially hold a list of DVDs
 	{
 		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
 		{   
-            if(this.DVDs[lcv] == null)
+            if (this.DVDs[lcv] == null)		//find an empty spot
             {
-                
+            	this.DVDs[lcv] = DVD;		//add DVD to the list
+            	break;
             }       
         } 
 	}
 	
 	/**
-	 * These methods will be used within the class
-	 * @param person
+	 * removes a DVD from the list
 	 * @param inDVD
 	 */
-	public void removeDVD(CustomerType person, DvdType inDVD)
+	public void removeDVD(DvdType DVD)
 	{
-		person.returnDVD(inDVD);				//person basically returns DVD
-		inDVD.setCopies(inDVD.getCopies()+1);	//increment the number of copies by 1
+		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
+		{   
+            if (this.DVDs[lcv] == DVD)		//find the DVD
+            {
+            	this.DVDs[lcv] = null;		//remove it from the list
+            	break;
+            }       
+		}
 	}
 }
