@@ -180,6 +180,18 @@ public class DriverDvdStore {
 	
 	/**
 	 * 
+	 * @param title
+	 * @param DVDlibrary
+	 * @return the details of the DVD
+	 */
+	public String showDVD(String title, LinkedPositionalList<DvdType> DVDlibrary)
+	{
+		Position<DvdType> DVDPosition = searchFor(title, DVDlibrary);
+		return DVDPosition.getElement().toString();
+	}
+	
+	/**
+	 * 
 	 * @param full name name of customer to search for
 	 * @param Linked Positional List that holds CustomerType Objects CusDatabase
 	 * @return the position of the Customer
@@ -232,6 +244,27 @@ public class DriverDvdStore {
 		if(searchFor(title, DVDlibrary) != null)		//if this method returns a position (not null), evaluates to true
 			return true;
 		return false;
+	}
+	
+	
+	/**
+	 * 
+	 * @param title
+	 * @param DVDlibrary
+	 * @return 
+	 */
+	public static String removeDVD(String title, LinkedPositionalList<DvdType> DVDlibrary)
+	{
+		try
+		{
+			Position<DvdType> DVDPosition = searchFor(title, DVDlibrary);	//searching for the title					
+			DVDlibrary.remove(DVDPosition);			//remove the Position from that positional list
+			return title + "has been removed";
+		}
+		catch (Exception e)
+		{
+			return "This DVD doesn't exist";
+		}
 	}
 	
 	
