@@ -15,6 +15,7 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 		this.DVDs = DVDs;
 	}
 
+	//generic constructor
 	public CheckedOut() {}
 
 	public double getAccountNumber() {
