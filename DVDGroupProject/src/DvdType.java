@@ -2,12 +2,12 @@ import java.util.Arrays;
 
 public class DvdType {
 	
-	String title;
-	String[] stars;
-	String producer;
-	String director;
-	String proCompany;
-	int copies;
+	private String title;
+	private String[] stars;
+	private String producer;
+	private String director;
+	private String proCompany;
+	private int copies;
 	
 	//constructors
 	
