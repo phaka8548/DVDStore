@@ -262,6 +262,69 @@ public class DriverDvdStore {
 			return "This DVD doesn't exist";
 		}
 	}
+	/**
+	 * 
+	 * @param customer
+	 * @param tempCust
+	 * @return 
+	 */
+	public static String removeCustomer(String customer, LinkedPositionalList<CustomerType> tempCust)
+	{
+		try
+		{
+			Position<CustomerType> custPosition = searchFor(customer, tempCust);	//searching for the title					
+			tempCust.remove(custPosition);			//remove the Position from that positional list
+			return customer + " has been removed";
+		}
+		catch (Exception e)
+		{
+			return "This customer doesn't exist";
+		}
+	}
+	/**
+	 * 
+	 * @param title
+	 * @param tempCheck
+	 * @return 
+	 */
+	public static String removeCheckedOutDVD(String title, LinkedPositionalList<CheckedOut> tempCheck)
+	{
+		try
+		{
+			Position<CheckedOut> CheckedOutPosition = searchFor(title, tempCheck);	//searching for the title					
+			tempCheck.remove(CheckedOutPosition);			//remove the Position from that positional list
+			return title + " has been removed";
+		}
+		catch (Exception e)
+		{
+			return "This checked out DVD doesn't exist";
+		}
+	}
+	/**
+	 * 
+	 * @param id of checkedOut item 
+	 * @param tempCheck
+	 * @return Position<CheckedOut> the id of checkedOut item
+	 * @throws NoSuchElementException if item doesn't exist 
+	 */
+	public static Position<CheckedOut> searchFor(int id, LinkedPositionalList<CheckedOut> tempCheck)
+	throws NoSuchElementException
+	{
+		Position<CheckedOut> checkiterator = tempCheck.first();			//Set initial position to point to first position (node) in array
+		while (checkiterator != null) 
+		{ .
+			 //compare the titles
+			if (id == (tempCheck.getElement().getID())	//get title of element in that position
+			{
+				System.out.println("Found CheckedOut DVD ID: " + id);
+				return checkiterator;
+			}
+			//else, go to next element
+			checkiterator =tempCheck.after(checkiterator);			//make iterator the next position 
+		 }
+		
+		throw new NoSuchElementException("Cannot locate DVD ID: " + id); 
+	}
 	
 	
 	
