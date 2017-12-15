@@ -7,16 +7,22 @@ public class CustomerType extends Person{
 	private double accountNumber;
 	private String email;
 	private DvdType[] rentedDVDs = {null, null, null, null, null};	//Customers can only rent 5 DVD's at a time
-
+	private static int numCustomers = 1;
+	
 	public CustomerType(String fullName, double accountNumber, String email) {
 		super(fullName);	//inherited from superclass
 		this.fullName = fullName;
 		this.accountNumber = accountNumber;
 		this.email = email;
 		this.rentedDVDs = rentedDVDs;
+		numCustomers++;
 	}
 	
 	
+	public static int getNumCustomers() {
+		return numCustomers;
+	}
+
 	public String getFullName() {
 		return fullName;
 	}
