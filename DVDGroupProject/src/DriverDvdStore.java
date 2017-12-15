@@ -79,9 +79,13 @@ public class DriverDvdStore {
 		carl.rentDVD(a);
 		carl.rentDVD(b);
 		carl.rentDVD(c);
-		carl.rentDVD(d);
 		System.out.println(carl.toString());
-		carl.returnDVD(b);
+		carl.rentDVD(d);
+		carl.rentDVD(a);
+		carl.rentDVD(b);
+		carl.rentDVD(c);
+		carl.rentDVD(d);
+		carl.returnDVD(c);
 		System.out.println(carl.toString());
 		
 		
