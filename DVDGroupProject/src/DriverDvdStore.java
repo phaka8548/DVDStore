@@ -60,7 +60,7 @@ public class DriverDvdStore {
 		//Creating some customer to fill a list
 		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com");
 		joey.rentDVD(a);
-		int newID = joey.getNumCustomers();
+		int newID = CustomerType.getNumCustomers();
 		
 		CustomerType josh = new CustomerType("Josh Smith", newID, "JoshSmith@email.com");
 		josh.rentDVD(b);
