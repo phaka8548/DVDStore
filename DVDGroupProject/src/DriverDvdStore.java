@@ -32,6 +32,7 @@ public class DriverDvdStore {
 		temp.addFirst(c);
 		temp.addFirst(d);
 		
+		System.out.println(removeDVD("The Rat Terminator", temp));
 		
 		//an uninitialized dvdType
 		//DvdType e = new DvdType();
@@ -59,10 +60,12 @@ public class DriverDvdStore {
 		//Creating some customer to fill a list
 		CustomerType joey = new CustomerType("Joey Jo", 1, "JoeyJo@email.com");
 		joey.rentDVD(a);
+		int newID = joey.getNumCustomers();
 		
-
-		CustomerType josh = new CustomerType("Josh Smith", 2, "JoshSmith@email.com");
+		CustomerType josh = new CustomerType("Josh Smith", newID, "JoshSmith@email.com");
 		josh.rentDVD(b);
+		
+		System.out.println(josh.toString());
 		
 		CustomerType jess = new CustomerType("Jess Cooper", 3, "JessCooper@email.com");
 		jess.rentDVD(c);
@@ -259,7 +262,7 @@ public class DriverDvdStore {
 		{
 			Position<DvdType> DVDPosition = searchFor(title, DVDlibrary);	//searching for the title					
 			DVDlibrary.remove(DVDPosition);			//remove the Position from that positional list
-			return title + "has been removed";
+			return title + " has been removed";
 		}
 		catch (Exception e)
 		{
