@@ -123,8 +123,6 @@ public class DriverDvdStore {
 		//before adding object to a list, search through list, find ID number, and add that DVD to that ID
 		//if they don't have anything checked out, create a new checked out object and add that to that array
 		//need a 3rd search method to search through CheckedOut positional list
-		
-		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
 	
 		//Implementation of how the checkedOut positional list (list of all checkedOut DVDs and their associated account
 		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
