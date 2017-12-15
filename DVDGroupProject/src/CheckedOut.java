@@ -11,8 +11,16 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 	
 	
 	private double accountNumber;				//holding account number of a person
-	private DvdType[] DVDs = new DvdType[5];	//holding DVDs person checked out (rented)
+	private DvdType[] DVDs = {null, null, null, null, null};	//holding DVDs person checked out (rented)
 	
+
+	//this object will hold an account number and the DVD that was rented
+	public CheckedOut(double accountNumber, DvdType[] dVDs) {
+		super();
+		this.accountNumber = accountNumber;
+		//CustomerType rentingCustomer = new CustomerType("", accountNumber, "newEmail");
+		DVDs = dVDs;
+	}
 
 	//checkout - add a DVD to the customer's list and decrement the DVDs copies by 1
 	//in order to implement, create a customer, and a DVD
@@ -21,10 +29,15 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 	 * @param CustomerType person who is checking out DVD
 	 * @param outDVD the DVD the person is checking out
 	 */
-	public void checkOut(CustomerType person, DvdType outDVD)
+	public void addDVD(DvdType DVD)
 	{
-		person.rentDVD(outDVD);					//add that DVD to the person's list
-		outDVD.setCopies(outDVD.getCopies()-1);	//decrement the number of copies by 1
+		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
+		{   
+            if(this.DVDs[lcv] == null)
+            {
+                
+            }       
+        } 
 	}
 	
 	/**
@@ -32,7 +45,7 @@ public class CheckedOut {			//object that holds an account number and the DVD's 
 	 * @param person
 	 * @param inDVD
 	 */
-	public void checkIn(CustomerType person, DvdType inDVD)
+	public void removeDVD(CustomerType person, DvdType inDVD)
 	{
 		person.returnDVD(inDVD);				//person basically returns DVD
 		inDVD.setCopies(inDVD.getCopies()+1);	//increment the number of copies by 1
