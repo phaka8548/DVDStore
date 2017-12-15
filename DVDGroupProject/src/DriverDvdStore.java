@@ -121,35 +121,21 @@ public class DriverDvdStore {
 		//need a 3rd search method to search through CheckedOut positional list
 		
 		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
+	
+		//Implementation of how the checkedOut positional list (list of all checkedOut DVDs and their associated account
+		LinkedPositionalList<CheckedOut> tempCheck = new LinkedPositionalList<>();
 		
-		/*CheckedOut e = new CheckedOut();			//Checked out is basically an object that holds which DVDs are checked
-													//out and who has the DVD
-		
-		e.setTitles(joey.getRentedDVDs());
+		//create a new checkedOut object when a customer checks something out
+		CheckedOut e = new CheckedOut(2);			//Checked out is basically an object that holds which DVDs are checked
+													//out and what account # has the DVD
+		//get the right account number
 		e.setAccountNumber(joey.getAccountNumber());
+		//put the DVD in the checked out object
+		e.addDVD(d);
 		
-		tempCheck.addFirst(e);
+		//add the object to the list
+		tempCheck.addLast(e);
 		
-		CheckedOut f = new CheckedOut();
-		
-		f.setTitles(josh.getRentedDVDs());
-		f.setAccountNumber(josh.getAccountNumber());
-		
-		tempCheck.addFirst(f);
-		
-		CheckedOut g = new CheckedOut();
-		
-		g.setTitles(jess.getRentedDVDs());
-		g.setAccountNumber(jess.getAccountNumber());
-		
-		tempCheck.addFirst(g);
-		
-		CheckedOut h = new CheckedOut();
-		
-		h.setTitles(jill.getRentedDVDs());
-		h.setAccountNumber(jill.getAccountNumber());
-		
-		tempCheck.addFirst(h);*/
 		
 		
 		
