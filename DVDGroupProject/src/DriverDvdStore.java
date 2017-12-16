@@ -115,7 +115,6 @@ public class DriverDvdStore {
 	
 	/**
 	 * 
-
 	 * @param full name name of customer to search for
 	 * @param Linked Positional List that holds CustomerType Objects CusDatabase
 	 * @return the position of the Customer
@@ -161,7 +160,6 @@ public class DriverDvdStore {
 		return null;
 }
 	
-	
 //dvd methods using the searchforDVD method
 	
 	/**
@@ -175,7 +173,6 @@ public class DriverDvdStore {
 		Position<DvdType> DVDPosition = searchForDVD(title, DVDlibrary);
 		return DVDPosition.getElement().toString() + "\n";
 	}
-	
 	
 	/**
 	 * Method returns a boolean to see if a DVD exists within a certain library
@@ -204,7 +201,6 @@ public class DriverDvdStore {
 		return CustomerPosition.getElement().toString() + "\n";
 	}
 
-	
 	/**
 	 * Method returns a boolean to see if a name exists within a certain library
 	 * @param name
@@ -217,7 +213,6 @@ public class DriverDvdStore {
 			return true;
 		return false;
 	}
-
 	
 //checkedOut methods using the searchForCheckedOut method
 	
@@ -234,7 +229,6 @@ public class DriverDvdStore {
 		return false;
 	}
 
-	
 	/**
 	 * 
 	 * @param customer
@@ -246,7 +240,6 @@ public class DriverDvdStore {
 		Position<CheckedOut> CheckedOutPosition = searchForCheckedOut(customer, CheckedOutlibrary);
 		return CheckedOutPosition.getElement().toString() + "\n";
 	}
-
 
 //show what dvds someone has checked out based on their name
 	
@@ -270,7 +263,6 @@ public class DriverDvdStore {
 						return name + " hasn't checked anything out";
 		}
 			
-	
 //print list methods
 
 	/**
@@ -291,7 +283,6 @@ public class DriverDvdStore {
 		System.out.println();
 	}
 	
-
 	/**
 	 * This method prints out all the customers and the dvds they have rented given a positional list
 	 * @param Customerlibrary
@@ -328,7 +319,6 @@ public class DriverDvdStore {
 		System.out.println();
 	}
 	
-	
 //remove methods
 	
 	/**
@@ -351,7 +341,6 @@ public class DriverDvdStore {
 		}
 	}
 	
-
 	/**
 	 * 
 	 * @param customer
@@ -372,7 +361,6 @@ public class DriverDvdStore {
 		}
 }
 	
-
 	/**
 	 * 
 	 * @param title
@@ -393,8 +381,6 @@ public class DriverDvdStore {
 		}
 }
 	
-	
-
 //Rent and Return - the search methods and the classes
 	
 	/**
@@ -411,19 +397,28 @@ public class DriverDvdStore {
 		if (checkDVD(title, DVDlibrary) && checkCustomer(name, customerLibrary))
 				{
 					Position<DvdType> x = searchForDVD(title, DVDlibrary);
-					x.getElement().checkOut();	//check out the DVD (decrements copies)
+					
 					
 					Position<CustomerType> y = searchForCustomer(name, customerLibrary);
 					
 					if (checkCheckedOut(y.getElement(), checkedOutLibrary))
 					{
 						Position<CheckedOut> z = searchForCheckedOut(y.getElement(), checkedOutLibrary);
-						z.getElement().addDVD(x.getElement());
-						System.out.println("Added " + title + " to the dvds " + name + " has checked out.");
+						
+						if (!z.getElement().isFull())
+						{
+							z.getElement().addDVD(x.getElement());
+							x.getElement().checkOut();
+							System.out.println("Added " + title + " to the dvds " + name + " has checked out.");
+						} else {
+							System.out.println(name + " cannot rent anymore dvds");
+							
+						}
 					} else {
 						CheckedOut w = new CheckedOut(y.getElement());
 						w.addDVD(x.getElement()); 
 						checkedOutLibrary.addFirst(w);
+						x.getElement().checkOut();
 						System.out.println(name + " has checked out " + title);
 					}
 					
@@ -450,7 +445,6 @@ public class DriverDvdStore {
 		if (checkDVD(title, DVDlibrary) && checkCustomer(name, customerLibrary))
 		{
 			Position<DvdType> x = searchForDVD(title, DVDlibrary);
-			x.getElement().checkIn();
 			
 			Position<CustomerType> y = searchForCustomer(name, customerLibrary);
 			
@@ -459,11 +453,14 @@ public class DriverDvdStore {
 						Position<CheckedOut> z = searchForCheckedOut(y.getElement(), checkedOutLibrary);
 						z.getElement().removeDVD(x.getElement());
 						
+						
 						if (z.getElement().isEmpty())
 						{
 							checkedOutLibrary.remove(z);
+							x.getElement().checkIn();
 							System.out.println(name + " has no more DVDs after returning " + title);
 						} else {
+							x.getElement().checkIn();
 							System.out.println(name + " returned " + title);
 						}
 						
@@ -476,11 +473,5 @@ public class DriverDvdStore {
 
 	System.out.println();
 	}
-	
-	
-	
-	
-	
-	
 	
 }
