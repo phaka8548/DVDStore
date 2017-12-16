@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /*object that holds an account number and the DVD's associated with that account #
 essentially a checkedOut object is a piece of paper that holds the account # and DVD associated with that account
 and in the checkout positional list - grab the DVD that was checked and the account # that holds it
@@ -9,6 +7,7 @@ public class CheckedOut {
 
 	private CustomerType customer;				
 	private DvdType[] DVDs = {null, null, null, null, null};	
+	private int lastIndex = -1;
 
 	//constructors
 	
@@ -44,8 +43,8 @@ public class CheckedOut {
 		DVDs = dVDs;
 	}
 
-	
 	//functional methods
+	
 	
 	/**
 	 * adds a DVD into a checkedOutObject
@@ -53,19 +52,16 @@ public class CheckedOut {
 	 */
 	public void addDVD(DvdType DVD)			//This object will essentially hold a list of DVDs
 	{
-		for(int lcv = 0; lcv < this.DVDs.length+1; lcv++)
+		for(int lcv = 0; lcv < this.DVDs.length; lcv++)
 		{   
-			if (lcv == this.DVDs.length) 
-            {
-                System.out.println(this.customer.getFullName() + " cannot rent any more DVDs" + "\n");
-                break;
-            }   
             if (this.DVDs[lcv] == null)		//find an empty spot
             {
+            	lastIndex++;
             	this.DVDs[lcv] = DVD;		//add DVD to the list
             	break;
             }       
         } 
+		
 	}
 	
 	/**
@@ -74,33 +70,34 @@ public class CheckedOut {
 	 */
 	public void removeDVD(DvdType DVD)
 	{
-		int nullElement = 0;
+		int nullSpot = 0;
+		
 		for (int lcv = 0; lcv < DVDs.length; lcv++)
 		{
 			if(DVDs[lcv].equals(DVD))			
 				{
 				 DVDs[lcv] = null;
-				 nullElement = lcv;
+				 nullSpot = lcv;
 				 break;
 				}
 		}
-		for(int lcv = nullElement; lcv < DVDs.length; lcv++)
-		{
-			if (lcv == DVDs.length)
-				break;
-			
-			if (DVDs[lcv+1] == null) 
-			{
-				break;
-			} else {
-				DVDs[lcv] = DVDs[lcv+1];
-			}
-		}
+			DVDs[nullSpot] = DVDs[lastIndex];
+			lastIndex--;
+		
 	}
+	
 	
 	public boolean isEmpty()
 	{
-		if (DVDs[0] == null)
+		if (this.getDVDs()[0] == null)
+			return true;
+		return false;
+	}
+
+
+	public boolean isFull()
+	{
+		if (!(this.getDVDs()[4] == null))
 			return true;
 		return false;
 	}
@@ -122,3 +119,4 @@ public class CheckedOut {
 		
 	}
 }
+
