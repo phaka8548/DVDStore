@@ -57,7 +57,6 @@ public class DriverDvdStore {
 		//testing the methods
 		
 		
-		
 		printAllDVDs(DVDList);
 	
 		printAllCustomers(CustomerList);
@@ -67,23 +66,43 @@ public class DriverDvdStore {
 		System.out.println(checkCustomer("kiel", CustomerList));
 		System.out.print(showCustomer("Joey Jo", CustomerList));
 		
-		
 
-		
 		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		
+		Position<CheckedOut> CheckedOutPosition = searchForCheckedOut(joey, CheckedOutList);
+		
+	
+		System.out.println(CheckedOutPosition.getElement().isFull());
+	
 		rentDVD("kiel", "The Notebook", DVDList, CustomerList, CheckedOutList);
 		rentDVD("Joey Jo", "Star Wars", DVDList, CustomerList, CheckedOutList);
 		
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		rentDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		
+	
 		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
-		returnDVD("kiel", "The Notebook", DVDList, CustomerList, CheckedOutList);
-		returnDVD("Joey Jo", "Star Wars", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		returnDVD("Joey Jo", "The Notebook", DVDList, CustomerList, CheckedOutList);
+		
+		
+		System.out.println(checkCheckedOut(joey, CheckedOutList));
+		//System.out.println(CheckedOutPosition.getElement().isEmpty());
+		//System.out.println(CheckedOutPosition.getElement().isFull());
 		
 		System.out.println(showCustomersCheckedOut("Joey Jo", CustomerList, CheckedOutList));
 		
 		System.out.println(checkDVD("The Notebook", DVDList));
 		System.out.print(showDVD("The Notebook", DVDList));
-
-		
 	}
 	
 	
